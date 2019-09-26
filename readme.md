@@ -18,3 +18,13 @@ A simple Lumen 6.0 boilerplate with JWT Authentication out of the box
 ## Postman Collection
 
 * A postman collection, with the existent endpoints, can be found at the location `/docs/AuthApp.postman_collection.json`
+
+### Available Endpoints [api/v1]
+* /register - Register a new user
+* /login - Login into the system and get the JWT token
+* /logout - Logout of the system and invalidate given JWT token
+* /refresh - Refresh given JWT token and get a new one
+
+* /users - Get all registed users
+* /users/me - Get the Token's Owner User
+* /users/{id} - Get a user by its ID
