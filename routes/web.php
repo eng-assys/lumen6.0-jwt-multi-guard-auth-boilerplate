@@ -29,4 +29,10 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
         $router->get('/{id}', 'UserController@user');
     });
 
+    $router->group(['prefix' => 'applications'], function () use ($router) {
+        $router->get('/', 'ApplicationController@applications');
+        $router->get('/current', 'ApplicationController@current');
+        $router->get('/{id}', 'ApplicationController@application');
+    });
+
  });

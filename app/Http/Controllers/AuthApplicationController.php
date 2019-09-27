@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Application;
 
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class AuthApplicationController extends Controller
 {
     /**
-     * Store a new user.
+     * Store a new application.
      *
      * @param  Request  $request
      * @return Response
@@ -20,25 +20,25 @@ class AuthController extends Controller
         //validate incoming request
         $this->validate($request, [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
+            'client_id' => 'required|unique:applications',
+            'client_secret' => 'required|confirmed',
         ]);
 
         try {
 
-            $user = new User;
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $plainPassword = $request->input('password');
-            $user->password = app('hash')->make($plainPassword);
+            $application = new Application;
+            $application->name = $request->input('name');
+            $application->client_id = $request->input('client_id');
+            $plainClientSecret = $request->input('client_secret');
+            $application->client_secret = app('hash')->make($plainClientSecret);
 
-            $user->save();
+            $application->save();
 
             //return successful response
-            return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
+            return response()->json(['application' => $application, 'message' => 'CREATED'], 201);
         } catch (\Exception $e) {
             //return error message
-            return response()->json(['message' => 'User Registration Failed!'], 409);
+            return response()->json(['message' => 'Application Registration Failed!'], 409);
         }
     }
 
@@ -52,21 +52,21 @@ class AuthController extends Controller
     {
         //validate incoming request
         $this->validate($request, [
-            'email' => 'required|string',
-            'password' => 'required|string',
+            'client_id' => 'required|string',
+            'client_secret' => 'required|min:8|string',
         ]);
 
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['client_id', 'client_secret']);
 
         if (!$token = Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized User Token'], 401);
+            return response()->json(['error' => 'Application Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
     }
 
     /**
-     * Log the user out (Invalidate the token).
+     * Log the application out (Invalidate the token).
      *
      * @return \Illuminate\Http\JsonResponse
      */
