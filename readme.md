@@ -19,7 +19,7 @@ A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the bo
 
 ## Postman Collection
 
-* A postman collection, with the existent endpoints, can be found at the location `/docs/AuthApp.postman_collection.json`
+* A postman collection and its correspondent environment, with the possible endpoints, can be found at the directory `/docs`
 
 ### Available user's Endpoints [api/v1/users]
 * /register - Register a new user
