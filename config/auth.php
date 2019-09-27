@@ -39,6 +39,10 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+        'client_applications' => [
+            'driver' => 'jwt',
+            'provider' => 'applications',
+        ],
         'default_api' => ['driver' => 'api'],
     ],
 
@@ -62,6 +66,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => \App\Models\User::class
+        ],
+        'applications' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Application::class
         ]
     ],
 
