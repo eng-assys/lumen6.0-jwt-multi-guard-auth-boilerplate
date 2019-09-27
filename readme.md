@@ -1,6 +1,6 @@
-# Lumen Authentication Boilerplate
+# Lumen Multi Guard JWT Authentication Boilerplate
 
-A simple Lumen 6.0 boilerplate with JWT Authentication out of the box
+A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the box
 
 ## Dependencies
 * Lumen 6.0
