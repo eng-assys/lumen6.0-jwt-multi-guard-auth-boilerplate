@@ -15,6 +15,13 @@ class Application extends Model implements AuthenticatableContract, Authorizable
     use Authenticatable, Authorizable;
 
     /**
+     * The name of table.
+     *
+     * @var string
+     */
+    protected $table = 'applications';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -31,6 +38,16 @@ class Application extends Model implements AuthenticatableContract, Authorizable
     protected $hidden = [
         'client_secret',
     ];
+
+    /**
+     * Return the encoded client_secret (for login purposes).
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->client_secret;
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
