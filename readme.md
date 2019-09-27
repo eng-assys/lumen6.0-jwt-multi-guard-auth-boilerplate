@@ -27,9 +27,9 @@ A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the bo
 * /logout - Logout of the system and invalidate given JWT token
 * /refresh - Refresh given JWT token and get a new one
 
-* /users - Get all registed users
-* /users/me - Get the Token's Owner User
-* /users/{id} - Get a user by its ID
+* / - Get all registed users
+* /me - Get the Token's Owner User
+* /{id} - Get a user by its ID
 
 ### Available application's Endpoints [api/v1/applications]
 * /register - Register a new application
@@ -37,6 +37,6 @@ A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the bo
 * /logout - Logout of the system and invalidate given JWT token
 * /refresh - Refresh given JWT token and get a new one
 
-* /applications - Get all registed applications
-* /applications/current - Get the Token's Owner Application
-* /applications/{id} - Get a user by its ID
+* / - Get all registed applications
+* /current - Get the Token's Owner Application
+* /{id} - Get a user by its ID
