@@ -29,9 +29,7 @@ class AuthApplicationController extends Controller
             $application = new Application;
             $application->name = $request->input('name');
             $application->client_id = $request->input('client_id');
-            $plainClientSecret = $request->input('client_secret');
-            $application->client_secret = app('hash')->make($plainClientSecret);
-
+            $application->client_secret = app('hash')->make($request->input('client_secret'));
             $application->save();
 
             //return successful response
@@ -53,12 +51,15 @@ class AuthApplicationController extends Controller
         //validate incoming request
         $this->validate($request, [
             'client_id' => 'required|string',
-            'client_secret' => 'required|min:8|string',
+            'client_secret' => 'required|string',
         ]);
 
-        $credentials = $request->only(['client_id', 'client_secret']);
+        $credentials = [
+            'client_id' => $request->input('client_id'),
+            'password' => $request->input('client_secret')
+        ];
 
-        if (!$token = Auth::attempt($credentials)) {
+        if (!$token = Auth::guard('client_applications')->attempt($credentials)) {
             return response()->json(['error' => 'Application Unauthorized'], 401);
         }
 
@@ -72,7 +73,7 @@ class AuthApplicationController extends Controller
      */
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('client_applications')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -84,7 +85,7 @@ class AuthApplicationController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::refresh());
+        return $this->respondWithToken(Auth::guard('client_applications')->refresh());
     }
 
 }
