@@ -63,6 +63,8 @@ $app->singleton(
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
+    'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
 ]);
 
 /*
@@ -89,6 +91,12 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 // Load Config Files from /config
 // ==============================
 $app->register(Chuckrincon\LumenConfigDiscover\DiscoverServiceProvider::class);
+
+// ===================================
+// Configure PermissionServiceProvider
+// ===================================
+$app->alias('cache', \Illuminate\Cache\CacheManager::class);
+$app->register(Spatie\Permission\PermissionServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

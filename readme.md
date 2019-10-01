@@ -4,8 +4,9 @@ A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the bo
 
 ## Dependencies
 * Lumen 6.0
-* **chuckrincon/lumen-config-discover:** loads automatically config files placed in /config directory
-* **tymon/jwt-auth:** allows use JWT authentication in Laravel/Lumen frameworks
+* **chuckrincon/lumen-config-discover:** Allow load automatically config files placed in /config directory
+* **tymon/jwt-auth:** Allow use JWT authentication in Laravel/Lumen frameworks
+* **spatie/laravel-permission:** Associate users with roles and permissions
 
 ## Instalation
 * Copy `.env.example` file to `.env` (set the variables according your project)  
