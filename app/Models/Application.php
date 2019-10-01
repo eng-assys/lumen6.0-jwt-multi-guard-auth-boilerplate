@@ -15,7 +15,7 @@ class Application extends Model implements AuthenticatableContract, Authorizable
 {
     use Authenticatable, Authorizable, HasRoles;
 
-    protected $guard_name = 'client_applications';
+    protected $guard_name = 'client_application';
 
     /**
      * The name of table.

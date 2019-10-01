@@ -59,7 +59,7 @@ class AuthApplicationController extends Controller
             'password' => $request->input('client_secret')
         ];
 
-        if (!$token = Auth::guard('client_applications')->attempt($credentials)) {
+        if (!$token = Auth::guard('client_application')->attempt($credentials)) {
             return response()->json(['error' => 'Application Unauthorized'], 401);
         }
 
@@ -73,7 +73,7 @@ class AuthApplicationController extends Controller
      */
     public function logout()
     {
-        Auth::guard('client_applications')->logout();
+        Auth::guard('client_application')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -85,7 +85,7 @@ class AuthApplicationController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::guard('client_applications')->refresh());
+        return $this->respondWithToken(Auth::guard('client_application')->refresh());
     }
 
 }

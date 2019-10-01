@@ -14,7 +14,7 @@ class ApplicationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:client_applications');
+        $this->middleware('auth:client_application');
     }
 
     /**
@@ -24,7 +24,7 @@ class ApplicationController extends Controller
      */
     public function current()
     {
-        return response()->json(['application' => Auth::guard('client_applications')->user()], 200);
+        return response()->json(['application' => Auth::guard('client_application')->user()], 200);
     }
 
     /**

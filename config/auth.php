@@ -39,7 +39,7 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
-        'client_applications' => [
+        'client_application' => [
             'driver' => 'jwt',
             'provider' => 'applications',
         ],
