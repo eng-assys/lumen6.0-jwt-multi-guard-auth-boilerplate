@@ -60,7 +60,7 @@ class AuthApplicationController extends Controller
         ];
 
         if (!$token = Auth::guard('client_application')->attempt($credentials)) {
-            return response()->json(['error' => 'Application Unauthorized'], 401);
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);

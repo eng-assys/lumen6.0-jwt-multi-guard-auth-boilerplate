@@ -26,17 +26,13 @@ class AuthController extends Controller
 
         try {
 
-            $user = new User;
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->password = app('hash')->make($request->input('password'));
-            $user->save();
+            $user = User::register($request->input('name'), $request->input('email'), $request->input('password'));
 
             //return successful response
-            return response()->json(['user' => $user, 'message' => 'CREATED'], 201);
+            return response()->json(['user' => $user], 201);
         } catch (\Exception $e) {
             //return error message
-            return response()->json(['message' => 'User Registration Failed!'], 409);
+            return response()->json(['error' => 'User Registration Failed!'], 400);
         }
     }
 
@@ -57,7 +53,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (!$token = Auth::guard('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized User Token'], 401);
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -70,9 +66,17 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        Auth::guard('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        try {
+            Auth::guard('api')->logout();
+
+            return response()->json(['message' => 'Successfully logged out']);
+
+        } catch (\Exception $e) {
+
+            return response()->json(['error' => 'User Logout Failed!'], 400);
+        }
+
     }
 
     /**
