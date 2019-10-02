@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Business\User;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -50,9 +50,7 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        $credentials = $request->only(['email', 'password']);
-
-        if (!$token = Auth::guard('api')->attempt($credentials)) {
+        if (!$token = User::login($request->input('email'), $request->input('password'))) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
@@ -73,7 +71,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Successfully logged out']);
 
         } catch (\Exception $e) {
-
+            dd($e);
             return response()->json(['error' => 'User Logout Failed!'], 400);
         }
 
