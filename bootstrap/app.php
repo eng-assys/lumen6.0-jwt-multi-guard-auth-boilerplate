@@ -92,6 +92,11 @@ $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 // ==============================
 $app->register(Chuckrincon\LumenConfigDiscover\DiscoverServiceProvider::class);
 
+// =================================
+// Register Laravel Tinker for Lumen
+// =================================
+$app->register(Laravel\Tinker\TinkerServiceProvider::class);
+
 // ===================================
 // Configure PermissionServiceProvider
 // ===================================
