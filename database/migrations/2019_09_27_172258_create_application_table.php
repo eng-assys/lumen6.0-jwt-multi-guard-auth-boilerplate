@@ -15,6 +15,7 @@ class CreateApplicationTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('client_id')->unique()->notNullable();
             $table->string('client_secret');

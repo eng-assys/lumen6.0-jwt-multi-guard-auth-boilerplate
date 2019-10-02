@@ -11,9 +11,11 @@ use Laravel\Lumen\Auth\Authorizable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
 
+use App\Traits\Uuid;
+
 class User extends Model implements AuthenticatableContract, AuthorizableContract, JWTSubject
 {
-    use Authenticatable, Authorizable, HasRoles;
+    use Authenticatable, Authorizable, HasRoles, Uuid;
 
     protected $guard_name = 'api';
 
