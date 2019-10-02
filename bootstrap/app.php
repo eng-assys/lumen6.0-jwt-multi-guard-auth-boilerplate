@@ -95,7 +95,9 @@ $app->register(Chuckrincon\LumenConfigDiscover\DiscoverServiceProvider::class);
 // =================================
 // Register Laravel Tinker for Lumen
 // =================================
-$app->register(Laravel\Tinker\TinkerServiceProvider::class);
+if (class_exists('Laravel\Tinker\TinkerServiceProvider')) {
+    $app->register(Laravel\Tinker\TinkerServiceProvider::class);
+}
 
 // ===================================
 // Configure PermissionServiceProvider
