@@ -61,7 +61,8 @@ class Application extends Model implements AuthenticatableContract, Authorizable
      */
     public function getJWTIdentifier()
     {
-        return $this->getKey();
+        // return $this->getKey();
+        return $this->uuid;
     }
 
     /**
