@@ -39,5 +39,4 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
         $router->post('logout', 'AuthApplicationController@logout');
         $router->post('refresh', 'AuthApplicationController@refresh');
     });
-
- });
+});

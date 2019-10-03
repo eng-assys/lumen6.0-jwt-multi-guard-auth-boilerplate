@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Business\User;
 
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class AuthController extends Controller
 {
@@ -25,13 +27,9 @@ class AuthController extends Controller
         ]);
 
         try {
-
             $user = User::register($request->input('name'), $request->input('email'), $request->input('password'));
-
-            //return successful response
             return response()->json(['user' => $user], 201);
         } catch (\Exception $e) {
-            //return error message
             return response()->json(['error' => 'User Registration Failed!'], 400);
         }
     }
@@ -64,16 +62,14 @@ class AuthController extends Controller
      */
     public function logout()
     {
-
         try {
             Auth::guard('api')->logout();
-
             return response()->json(['message' => 'Successfully logged out']);
-
+        } catch (TokenExpiredException $e) {
+            return response()->json(['message' => 'Token has already been invalidated']);
         } catch (\Exception $e) {
             return response()->json(['error' => 'User Logout Failed!'], 400);
         }
-
     }
 
     /**
@@ -83,7 +79,12 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::guard('api')->refresh());
+        try {
+            return $this->respondWithToken(Auth::guard('api')->refresh());
+        } catch (TokenExpiredException $e) {
+            return response()->json(['error' => 'Token has expired and can no longer be refreshed'], 401);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Token refresh failed!'], 400);
+        }
     }
-
 }
