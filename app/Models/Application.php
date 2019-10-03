@@ -66,6 +66,17 @@ class Application extends Model implements AuthenticatableContract, Authorizable
     }
 
     /**
+     * Get the name of the unique identifier for the user.
+     *
+     * @return string
+     */
+    public function getAuthIdentifierName()
+    {
+        // return $this->getKeyName();
+        return 'uuid';
+    }
+
+    /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
      * @return array
