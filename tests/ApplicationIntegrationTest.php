@@ -19,10 +19,10 @@ class ApplicationIntegrationTest extends TestCase
     public function testRegisterApplicationEndpoint()
     {
         $bodyData = [
-            'name' => 'Test Application',
-            'client_id' => 'client_id',
-            'client_secret' => 'client_secret',
-            'client_secret_confirmation' => 'client_secret',
+            'name' => 'Test',
+            'client_id' => 'test@test.com',
+            'client_secret' => 'test',
+            'client_secret_confirmation' => 'test',
         ];
         $headers = [];
         $this->post('api/v1/applications/register', $bodyData, $headers);
@@ -51,11 +51,11 @@ class ApplicationIntegrationTest extends TestCase
      */
     public function testLoginApplicationEndpoint()
     {
-        Application::register('Test Application', 'client_id', 'client_secret');
+        Application::register('Test', 'test@test.com', 'test');
 
         $bodyData = [
-            'client_id' => 'client_id',
-            'client_secret' => 'client_secret'
+            'client_id' => 'test@test.com',
+            'client_secret' => 'test'
         ];
         $headers = [];
         $this->post('api/v1/applications/login', $bodyData, $headers);
@@ -80,18 +80,17 @@ class ApplicationIntegrationTest extends TestCase
     public function testGetAllApplicationsEndpoint()
     {
 
-        $application = Application::register('Test Application', 'client_id', 'client_secret');
-        $access_token = Application::login($application->client_id, 'client_secret');
+        $application = Application::register('Test', 'test@test.com', 'test');
+        $access_token = Application::login($application->client_id, 'test');
 
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => "Bearer {$access_token}"
         ];
         $this->get('api/v1/applications/', $headers);
-
         $this->seeStatusCode(200);
-        $this->seeJsonStructure(
-            ['applications' =>
+        $this->seeJsonStructure(['applications' =>
+            [
                 [
                     'name',
                     'client_id',
@@ -101,7 +100,7 @@ class ApplicationIntegrationTest extends TestCase
                     'id'
                 ]
             ]
-        );
+        ]);
     }
 
 
@@ -113,14 +112,14 @@ class ApplicationIntegrationTest extends TestCase
      */
     public function testGetTokensApplicationEndpoint()
     {
-        $application = Application::register('Test Application', 'client_id', 'client_secret');
-        $access_token = Application::login($application->client_id, 'client_secret');
+        $application = Application::register('Test', 'test@test.com', 'test');
+        $access_token = Application::login($application->client_id, 'test');
 
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => "Bearer {$access_token}"
         ];
-        $this->get('api/v1/applications/me', $headers);
+        $this->get('api/v1/applications/current', $headers);
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
@@ -146,8 +145,8 @@ class ApplicationIntegrationTest extends TestCase
      */
     public function testGetApplicationByIdEndpoint()
     {
-        $application = Application::register('Test Application', 'client_id', 'client_secret');
-        $access_token = Application::login($application->client_id, 'client_secret');
+        $application = Application::register('Test', 'test@test.com', 'test');
+        $access_token = Application::login($application->client_id, 'test');
 
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded',
@@ -179,8 +178,8 @@ class ApplicationIntegrationTest extends TestCase
      */
     public function testRefreshApplicationTokenEndpoint()
     {
-        $application = Application::register('Test Application', 'client_id', 'client_secret');
-        $access_token = Application::login($application->client_id, 'client_secret');
+        $application = Application::register('Test', 'test@test.com', 'test');
+        $access_token = Application::login($application->client_id, 'test');
 
         $bodyData = [];
         $headers = [
@@ -191,14 +190,10 @@ class ApplicationIntegrationTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['data' =>
-                [
-                    'product_name',
-                    'product_description',
-                    'created_at',
-                    'updated_at',
-                    'links'
-                ]
+            [
+                'access_token',
+                'token_type',
+                'expires_in'
             ]
         );
     }
@@ -211,22 +206,25 @@ class ApplicationIntegrationTest extends TestCase
      */
     public function testLogoutApplicationEndpoint()
     {
+        $application = Application::register('Test', 'test@test.com', 'test');
+        $access_token = Application::login($application->client_id, 'test');
+
         $bodyData = [];
-        $headers = [];
+        $headers = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => "Bearer {$access_token}"
+        ];
+
         $this->post('api/v1/applications/logout', $bodyData, $headers);
 
         $this->seeStatusCode(200);
-        $this->seeJsonStructure(
-            ['data' =>
-                [
-                    'product_name',
-                    'product_description',
-                    'created_at',
-                    'updated_at',
-                    'links'
-                ]
-            ]
-        );
+
+        $this->get('api/v1/applications/1', $headers);
+
+        $this->seeStatusCode(401);
+
+
+
     }
 
 

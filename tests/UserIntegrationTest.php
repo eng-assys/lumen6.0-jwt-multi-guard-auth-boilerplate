@@ -5,7 +5,7 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 use App\Business\User;
 
-class UserTest extends TestCase
+class UserIntegrationTest extends TestCase
 {
 
     use DatabaseMigrations;
@@ -88,11 +88,9 @@ class UserTest extends TestCase
             'Authorization' => "Bearer {$access_token}"
         ];
         $this->get('api/v1/users/', $headers);
-
         $this->seeStatusCode(200);
-        dd($this->response);
-        $this->seeJsonStructure(
-            ['users' =>
+        $this->seeJsonStructure(['users' =>
+            [
                 [
                     'name',
                     'email',
@@ -102,7 +100,7 @@ class UserTest extends TestCase
                     'id'
                 ]
             ]
-        );
+        ]);
     }
 
 
@@ -192,14 +190,10 @@ class UserTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['data' =>
-                [
-                    'product_name',
-                    'product_description',
-                    'created_at',
-                    'updated_at',
-                    'links'
-                ]
+            [
+                'access_token',
+                'token_type',
+                'expires_in'
             ]
         );
     }
@@ -212,22 +206,25 @@ class UserTest extends TestCase
      */
     public function testLogoutUserEndpoint()
     {
+        $user = User::register('Test', 'test@test.com', 'test');
+        $access_token = User::login($user->email, 'test');
+
         $bodyData = [];
-        $headers = [];
+        $headers = [
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Authorization' => "Bearer {$access_token}"
+        ];
+
         $this->post('api/v1/users/logout', $bodyData, $headers);
 
         $this->seeStatusCode(200);
-        $this->seeJsonStructure(
-            ['data' =>
-                [
-                    'product_name',
-                    'product_description',
-                    'created_at',
-                    'updated_at',
-                    'links'
-                ]
-            ]
-        );
+
+        $this->get('api/v1/users/1', $headers);
+
+        $this->seeStatusCode(401);
+
+
+
     }
 
 
