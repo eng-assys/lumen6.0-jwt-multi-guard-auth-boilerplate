@@ -39,7 +39,7 @@ class Application extends ApplicationModel
      */
     public static function login($client_id, $client_secret)
     {
-        $credentials = ['client_id' => $client_id, 'client_secret' => $client_secret];
+        $credentials = ['client_id' => $client_id, 'password' => $client_secret];
         $access_token = \Auth::guard('client_application')->attempt($credentials);
         return $access_token ? $access_token : null;
     }
