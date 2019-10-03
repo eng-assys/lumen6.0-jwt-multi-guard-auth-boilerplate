@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  lumen-boilerplate:
+    image: 'lucaspaiva1/laravel-nginx:latest'
+    ports:
+      - '8000:80'
+    volumes:
+      - './:/usr/share/nginx'
