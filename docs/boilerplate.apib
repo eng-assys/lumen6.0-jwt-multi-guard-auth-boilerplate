@@ -16,9 +16,9 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
     + Attributes (User)
 
 ## Login User Collection [/users/login]
@@ -30,7 +30,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
 + Response 200 (application/json)
     + Attributes (AccessToken)
@@ -58,7 +58,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (AccessToken)
@@ -72,7 +72,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (array[User])
@@ -84,7 +84,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (User)
@@ -98,7 +98,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (User)
@@ -114,9 +114,9 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
-+ Response 200 (application/json)
++ Response 201 (application/json)
     + Attributes (Application)
 
 ## Application Collection [/applications/login]
@@ -128,7 +128,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 
     + Headers
 
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/json
 
 + Response 200 (application/json)
     + Attributes (AccessToken)
@@ -140,7 +140,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
 
@@ -155,7 +155,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (AccessToken)
@@ -169,7 +169,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (array[Application])
@@ -181,7 +181,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (Application)
@@ -196,7 +196,7 @@ This API Provides a boilerplate with JWT Multi Guard Authentication for Users an
 + Request
     + Headers
 
-            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTMzOTQ4LCJleHAiOjE1NzAxMzc1NDgsIm5iZiI6MTU3MDEzMzk0OCwianRpIjoiMzdRWUJYN0ZvT2NEbW9mciIsInN1YiI6IjQ5Y2ZmMTc1LTRlMDEtNDI1My05Y2FiLWVjMzM2MjIxNDZlYyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.iwQgpNY4Pb7-5BWcspy7RYfv2NLChoN834hroG9zkEo
 
 + Response 200 (application/json)
     + Attributes (Application)
