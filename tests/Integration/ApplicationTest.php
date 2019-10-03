@@ -1,11 +1,12 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+namespace Tests\Integration;
 
 use App\Business\Application;
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
-class ApplicationIntegrationTest extends TestCase
+class ApplicationTest extends TestCase
 {
 
     use DatabaseMigrations;
@@ -30,7 +31,8 @@ class ApplicationIntegrationTest extends TestCase
         $this->seeStatusCode(201);
 
         $this->seeJsonStructure(
-            ['application' =>
+            [
+                'application' =>
                 [
                     'name',
                     'client_id',
@@ -89,7 +91,8 @@ class ApplicationIntegrationTest extends TestCase
         ];
         $this->get('api/v1/applications/', $headers);
         $this->seeStatusCode(200);
-        $this->seeJsonStructure(['applications' =>
+        $this->seeJsonStructure([
+            'applications' =>
             [
                 [
                     'name',
@@ -123,7 +126,8 @@ class ApplicationIntegrationTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['application' =>
+            [
+                'application' =>
                 [
                     'name',
                     'client_id',
@@ -156,7 +160,8 @@ class ApplicationIntegrationTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['application' =>
+            [
+                'application' =>
                 [
                     'name',
                     'client_id',
@@ -222,10 +227,5 @@ class ApplicationIntegrationTest extends TestCase
         $this->get('api/v1/applications/1', $headers);
 
         $this->seeStatusCode(401);
-
-
-
     }
-
-
 }

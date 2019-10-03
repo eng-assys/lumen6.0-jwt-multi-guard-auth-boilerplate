@@ -1,11 +1,12 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+namespace Tests\Unit;
 
 use App\Business\User;
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
-class UserUnitTest extends TestCase
+class UserTest extends TestCase
 {
 
     use DatabaseMigrations;
@@ -35,7 +36,6 @@ class UserUnitTest extends TestCase
         $access_token = User::login($user->email, 'password');
 
         $this->assertNotNull($access_token);
-
     }
 
     /**
@@ -50,7 +50,5 @@ class UserUnitTest extends TestCase
         $access_token = User::login($user->email, 'wrongpassword');
 
         $this->assertNull($access_token);
-
     }
-
 }

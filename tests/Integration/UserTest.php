@@ -1,11 +1,12 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+namespace Tests\Integration;
 
 use App\Business\User;
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
-class UserIntegrationTest extends TestCase
+class UserTest extends TestCase
 {
 
     use DatabaseMigrations;
@@ -30,7 +31,8 @@ class UserIntegrationTest extends TestCase
         $this->seeStatusCode(201);
 
         $this->seeJsonStructure(
-            ['user' =>
+            [
+                'user' =>
                 [
                     'name',
                     'email',
@@ -89,7 +91,8 @@ class UserIntegrationTest extends TestCase
         ];
         $this->get('api/v1/users/', $headers);
         $this->seeStatusCode(200);
-        $this->seeJsonStructure(['users' =>
+        $this->seeJsonStructure([
+            'users' =>
             [
                 [
                     'name',
@@ -123,7 +126,8 @@ class UserIntegrationTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['user' =>
+            [
+                'user' =>
                 [
                     'name',
                     'email',
@@ -156,7 +160,8 @@ class UserIntegrationTest extends TestCase
 
         $this->seeStatusCode(200);
         $this->seeJsonStructure(
-            ['user' =>
+            [
+                'user' =>
                 [
                     'name',
                     'email',
@@ -222,10 +227,5 @@ class UserIntegrationTest extends TestCase
         $this->get('api/v1/users/1', $headers);
 
         $this->seeStatusCode(401);
-
-
-
     }
-
-
 }

@@ -1,16 +1,17 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
-use Laravel\Lumen\Testing\DatabaseTransactions;
+namespace Tests\Unit;
 
 use App\Business\Application;
+use Laravel\Lumen\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
-class ApplicationUnitTest extends TestCase
+class ApplicationTest extends TestCase
 {
 
     use DatabaseMigrations;
 
-     /**
+    /**
      * Test Register Application Function
      *
      * @return void
@@ -35,7 +36,6 @@ class ApplicationUnitTest extends TestCase
         $access_token = Application::login($application->client_id, 'client_secret');
 
         $this->assertNotNull($access_token);
-
     }
 
     /**
@@ -50,7 +50,5 @@ class ApplicationUnitTest extends TestCase
         $access_token = Application::login($application->client_id, 'wrongclient_secret');
 
         $this->assertNull($access_token);
-
     }
-
 }
