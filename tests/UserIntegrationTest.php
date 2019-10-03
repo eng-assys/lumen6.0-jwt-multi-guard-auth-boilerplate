@@ -11,19 +11,6 @@ class UserTest extends TestCase
     use DatabaseMigrations;
 
     /**
-     * Test Register User Function
-     *
-     * @return void
-     *
-     */
-    public function testUserRegistration()
-    {
-        $user = User::register('Test', 'test@test.com', 'test');
-        $this->assertEquals('Test', $user->name);
-        $this->assertEquals('test@test.com', $user->email);
-    }
-
-    /**
      * Test Register User Endpoint
      *
      * @return void

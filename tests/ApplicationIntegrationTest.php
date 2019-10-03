@@ -5,23 +5,10 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 use App\Business\Application;
 
-class ApplicationTest extends TestCase
+class ApplicationIntegrationTest extends TestCase
 {
 
     use DatabaseMigrations;
-
-    /**
-     * Test Register Application Function
-     *
-     * @return void
-     *
-     */
-    public function testApplicationRegistration()
-    {
-        $application = Application::register('Test Application', 'client_id', 'client_secret');
-        $this->assertEquals('Test Application', $application->name);
-        $this->assertEquals('client_id', $application->client_id);
-    }
 
     /**
      * Test Register Application Endpoint
