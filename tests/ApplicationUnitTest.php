@@ -10,7 +10,7 @@ class ApplicationUnitTest extends TestCase
 
     use DatabaseMigrations;
 
-    /**
+     /**
      * Test Register Application Function
      *
      * @return void
@@ -24,17 +24,32 @@ class ApplicationUnitTest extends TestCase
     }
 
     /**
-     * Test Login Application Function
+     * Test Successfull Login Application Function
      *
      * @return void
      *
      */
-    public function testApplicationLogin()
+    public function testApplicationSuccessfullLogin()
     {
-        $application = Application::register('Test Application', '12345678', '987654321');
-        $access_token = Application::login($application->client_id, '987654321');
+        $application = Application::register('Test Application', 'client_id', 'client_secret');
+        $access_token = Application::login($application->client_id, 'client_secret');
 
         $this->assertNotNull($access_token);
+
+    }
+
+    /**
+     * Test Wrong Login Application Function
+     *
+     * @return void
+     *
+     */
+    public function testApplicationWrongLogin()
+    {
+        $application = Application::register('Test Application', 'client_id', 'client_secret');
+        $access_token = Application::login($application->client_id, 'wrongclient_secret');
+
+        $this->assertNull($access_token);
 
     }
 
