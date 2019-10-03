@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Application;
 
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 
 class AuthApplicationController extends Controller
 {
@@ -73,9 +74,14 @@ class AuthApplicationController extends Controller
      */
     public function logout()
     {
-        Auth::guard('client_application')->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
+        try {
+            Auth::guard('client_application')->logout();
+            return response()->json(['message' => 'Successfully logged out']);
+        } catch (TokenExpiredException $e) {
+            return response()->json(['message' => 'Token has already been invalidated']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'User Logout Failed!'], 400);
+        }
     }
 
     /**
@@ -85,7 +91,12 @@ class AuthApplicationController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(Auth::guard('client_application')->refresh());
+        try {
+            return $this->respondWithToken(Auth::guard('client_application')->refresh());
+        } catch (TokenExpiredException $e) {
+            return response()->json(['error' => 'Token has expired and can no longer be refreshed'], 401);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Token refresh failed!'], 400);
+        }
     }
-
 }
