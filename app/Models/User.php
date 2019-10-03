@@ -44,7 +44,19 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function getJWTIdentifier()
     {
-        return $this->getKey();
+        // return $this->getKey();
+        return $this->uuid;
+    }
+
+    /**
+     * Get the name of the unique identifier for the user.
+     *
+     * @return string
+     */
+    public function getAuthIdentifierName()
+    {
+        // return $this->getKeyName();
+        return 'uuid';
     }
 
     /**

@@ -244,7 +244,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{token}}",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -258,21 +258,6 @@
 						"value": "application/x-www-form-urlencoded"
 					}
 				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "lucas.assis@gerenciagram.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "postgres",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "localhost:8000/api/v1/users/logout",
 					"host": [
@@ -297,7 +282,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{token}}",
+							"value": "{{application_token}}",
 							"type": "string"
 						}
 					]
@@ -311,21 +296,6 @@
 						"value": "application/x-www-form-urlencoded"
 					}
 				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "lucas.assis@gerenciagram.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "postgres",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "localhost:8000/api/v1/applications/logout",
 					"host": [
@@ -350,7 +320,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{token}}",
+							"value": "{{user_token}}",
 							"type": "string"
 						}
 					]
@@ -360,25 +330,10 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"type": "text",
-						"value": "application/x-www-form-urlencoded"
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "lucas.assis@gerenciagram.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "postgres",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "localhost:8000/api/v1/users/refresh",
 					"host": [
@@ -403,7 +358,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{token}}",
+							"value": "{{application_token}}",
 							"type": "string"
 						}
 					]
@@ -417,21 +372,6 @@
 						"value": "application/x-www-form-urlencoded"
 					}
 				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "email",
-							"value": "lucas.assis@gerenciagram.com",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "postgres",
-							"type": "text"
-						}
-					]
-				},
 				"url": {
 					"raw": "localhost:8000/api/v1/applications/refresh",
 					"host": [
