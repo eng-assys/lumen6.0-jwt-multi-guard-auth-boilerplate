@@ -18,23 +18,38 @@ class UserUnitTest extends TestCase
      */
     public function testUserRegistration()
     {
-        $user = User::register('Test', 'test@test.com', 'test');
-        $this->assertEquals('Test', $user->name);
+        $user = User::register('Test User', 'test@test.com', 'password');
+        $this->assertEquals('Test User', $user->name);
         $this->assertEquals('test@test.com', $user->email);
     }
 
     /**
-     * Test Login User Function
+     * Test Successfull Login User Function
      *
      * @return void
      *
      */
-    public function testUserLogin()
+    public function testUserSuccessfullLogin()
     {
-        $user = User::register('Test', 'test@test.com', 'test');
-        $access_token = User::login($user->email, 'test');
+        $user = User::register('Test User', 'test@test.com', 'password');
+        $access_token = User::login($user->email, 'password');
 
         $this->assertNotNull($access_token);
+
+    }
+
+    /**
+     * Test Wrong Login User Function
+     *
+     * @return void
+     *
+     */
+    public function testUserWrongLogin()
+    {
+        $user = User::register('Test User', 'test@test.com', 'password');
+        $access_token = User::login($user->email, 'wrongpassword');
+
+        $this->assertNull($access_token);
 
     }
 
