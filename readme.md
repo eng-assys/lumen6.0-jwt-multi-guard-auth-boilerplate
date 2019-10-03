@@ -22,6 +22,10 @@ A simple Lumen 6.0 boilerplate with JWT Multi Guard Authentication out of the bo
 
 * A postman collection and its correspondent environment, with the possible endpoints, can be found at the directory `/docs`
 
+## API Blueprint
+
+* A documentation to the project (using API Blueprint format) can be found at directory `/docs`
+
 ### Available user's Endpoints [api/v1/users]
 * /register - Register a new user
 * /login - Login into the system and get the JWT token

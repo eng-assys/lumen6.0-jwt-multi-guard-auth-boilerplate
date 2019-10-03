@@ -1,0 +1,247 @@
+FORMAT: 1A
+HOST: http://localhost:8000/v1
+
+# Lumen 6.0 JWT Auth Boilerplate
+
+This API Provides a boilerplate with JWT Multi Guard Authentication for Users and Applications
+
+# Group User Authentication API
+
+## Register User Collection [/users/register]
+
+### Register a new user [POST]
+
++ Request
+    + Attributes (UserRegister)
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 200 (application/json)
+    + Attributes (User)
+
+## Login User Collection [/users/login]
+
+### Login into the system and get the JWT token [POST]
+
++ Request
+    + Attributes (UserLogin)
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 200 (application/json)
+    + Attributes (AccessToken)
+
+## Logout User Collection [/users/logout]
+
+### Logout of the system and invalidate given JWT token [POST]
+
++ Request
+
+    + Headers
+
+            Authentication: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+
+        {
+            "message": "Successfully logged out"
+        }
+
+## Refresh Token Collection [/users/refresh]
+
+### Refresh given JWT token and get a new one [POST]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (AccessToken)
+
+# Group User Resource API
+
+## User Collection [/users]
+
+### Get all registed users [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (array[User])
+
+## Logged User Collection [/users/me]
+
+### Get the Token's Owner User [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (User)
+
+## User By ID Collection [/users/{user_uuid}]
++ Parameters
+    + user_uuid: 1 (string, required) - User's Id
+
+### Get a user by its ID [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (User)
+
+# Group Application Authentication API
+
+## Application Collection [/applications/register]
+
+### Register a new application [POST]
+
++ Request
+    + Attributes (ApplicationRegister)
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 200 (application/json)
+    + Attributes (Application)
+
+## Application Collection [/applications/login]
+
+### Login into the system and get the JWT token [POST]
+
++ Request
+    + Attributes (ApplicationLogin)
+
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+
++ Response 200 (application/json)
+    + Attributes (AccessToken)
+
+## Application Collection [/applications/logout]
+
+### Logout of the system and invalidate given JWT token [POST]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+
+        {
+            "message": "Successfully logged out"
+        }
+
+## Application Collection [/applications/refresh]
+
+### Refresh given JWT token and get a new one [POST]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (AccessToken)
+
+# Group Application Resource API
+
+## Application Collection [/applications]
+
+### Get All Registed Applications [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (array[Application])
+
+## Logged Application Collection [/applications/current]
+
+### Get the Token's Owner Application [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (Application)
+
+
+## Application By ID Collection [/applications/{application_uuid}]
++ Parameters
+    + application_uuid: 1 (string, required) - Application's Id
+
+### Get a user by its ID [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s
+
++ Response 200 (application/json)
+    + Attributes (Application)
+
+
+# Data Structures
+
+## User (object)
++ name: Ruan Nicolas (string) - User's Name
++ email: ruan.nicolas@gmail.com (string) - User's Email
++ uuid: `a733ec18-546f-483c-9e05-c257b987f64a` (string) - User's UUID
++ updated_at: `2019-10-03 17:06:57` (string) - User's last update date
++ created_at: `2019-10-03 17:06:57` (string) - User's creation date
++ id: 1 (string) - User's id
+
+## UserRegister (object)
++ name: Ruan Nicolas Silveira (string) - User's Name
++ email: ruan.nicolas@gmail.com (string) - User's Email
++ password: 1234567890 (string) - User's Password
++ password_confirmation: 1234567890 (string) - User's Password Confirmation
+
+## UserLogin (object)
++ email: ruan.nicolas@gmail.com (string) - User's Email
++ password: 1234567890 (string) - User's Password
+
+## Application (object)
+
++ id: 1 (number) - Application's Id
++ uuid: `e8bdca0c-6c88-45aa-a958-5cfb2340f4c1` (string) - Application's UUID
++ name: Test Application (string) - Application's Name
++ client_id: 123456771 (string) - Application's Client Id
++ created_at: `2019-10-03 13:04:58` (string) - Application's created date
++ updated_at: `2019-10-03 13:04:58` (string) - Application's updated date
+
+## ApplicationRegister (object)
++ name: Ruan Nicolas Silveira (string) - Application's Name
++ client_id: 123456771 (string) - Application's Client Id
++ client_secret: 1234567890 (string) - Application's Client Secret
++ client_secret_confirmation: 1234567890 (string) - Application's Client Secret Confirmation
+
+## ApplicationLogin (object)
++ client_id: 123456771 (string) - Application's Client Id
++ client_secret: 1234567890 (string) - Application's Client Secret
+
+## AccessToken (object)
++ access_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3YxL3VzZXJzL2xvZ2luIiwiaWF0IjoxNTcwMTIzNTY1LCJleHAiOjE1NzAxMjcxNjUsIm5iZiI6MTU3MDEyMzU2NSwianRpIjoiMktUN2FsNkg4QzNDOWN5byIsInN1YiI6ImE3MzNlYzE4LTU0NmYtNDgzYy05ZTA1LWMyNTdiOTg3ZjY0YSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.sFgyEzgUGfNo9Ce0qWVBQtrpRKegi5bPLgvVFBFZ5s (string) - Access Token
++ token_type: bearer (string) - Token's Type
++ expires_in: 3600 (number) - Token's Expiration in seconds
