@@ -8,7 +8,17 @@ server-wait: 3
 init: false
 custom: {}
 names: false
-only: []
+only: [
+  "User Authentication API > Register User Collection > Register a new user",
+  "User Authentication API > Login User Collection > Login into the system and get the JWT token",
+  "User Resource API > Logged User Collection > Get the Token's Owner User",
+  "User Resource API > User By ID Collection > Get a user by its ID",
+  "Application Authentication API > Application Collection > Register a new application",
+  "Application Authentication API > Application Collection > Login into the system and get the JWT token",
+  "Application Resource API > Application Collection > Get All Registed Applications",
+  "Application Resource API > Logged Application Collection > Get the Token's Owner Application",
+  "Application Resource API > Application By ID Collection > Get a user by its ID"
+]
 reporter: []
 output: []
 header: []
@@ -17,7 +27,7 @@ user: null
 inline-errors: false
 details: false
 method: []
-loglevel: debug
+loglevel: warning
 path: []
 hooks-worker-timeout: 5000
 hooks-worker-connect-timeout: 1500
